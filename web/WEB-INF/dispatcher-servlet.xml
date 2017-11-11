@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+
+    <!--
+    Most controllers will use the ControllerClassNameHandlerMapping above, but
+    for the index controller we are using ParameterizableViewController, so we must
+    define an explicit mapping for it.
+    -->
+    
+     
+    
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="index">indexController</prop>
+                <prop key="register">registerController</prop>
+                <prop key="registerform">registerController</prop>
+                <prop key="login">loginController</prop>
+                <prop key="login_form">loginController</prop>
+                <prop key="logout">loginController</prop>
+                <prop key="homepage">loginController</prop>
+                <prop key="listTweets">tweetsController</prop>
+                <prop key="listUsers">userController</prop>
+                <prop key="statusUpdate">tweetsController</prop>
+                <prop key="tweet">tweetsController</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+ 
+        <property name="prefix" value="/WEB-INF/jsp/" />
+ 
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!--
+    The index controller.
+    -->
+    <bean name="indexController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="index" />
+    
+    
+    <bean name="registerController"
+          class="com.minitwitter.controllers.RegisterController"/>
+    <bean name="loginController"
+          class="com.minitwitter.controllers.LoginController"/>
+      <bean name="tweetsController"
+          class="com.minitwitter.controllers.TweetsController"/>
+      <bean name="userController"
+          class="com.minitwitter.controllers.UserController"/>
+</beans>
