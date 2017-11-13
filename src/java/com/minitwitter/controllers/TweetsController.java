@@ -25,25 +25,25 @@ public class TweetsController extends MvcConfiguration {
     @RequestMapping(value = "/listTweets")
     public ModelAndView listTweets(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelView = new ModelAndView();
-        RequestHandler requestHandler = getRequestHandler(request,response);
-        int userId = requestHandler.getId_loggedin();
+        RequestHandler requestHandler = getRequestHandler(request, response);
         if (requestHandler.checkIfLoggedIn()) {
+            int userId = requestHandler.getId_loggedin();
             List<Tweet> listTweet = getTweetsDao().listTweets();
             listTweet.size();
             List<Following> followingIds = getFollowingDao().getFollowing(userId);
             List<Tweet> tweets = new ArrayList<Tweet>();
-         for (Following followingId : followingIds) {
+            for (Following followingId : followingIds) {
+                for (Tweet tweet : listTweet) {
+                    if (tweet.getUserId() == followingId.getFollowingId()) {
+                        tweets.add(tweet);
+                    }
+                }
+            }
             for (Tweet tweet : listTweet) {
-                if (tweet.getUserId() == followingId.getFollowingId()) {
+                if (tweet.getUserId() == userId) {
                     tweets.add(tweet);
                 }
             }
-        }
-        for (Tweet tweet : listTweet) {
-            if (tweet.getUserId() == userId) {
-                tweets.add(tweet);
-            }
-        }
 
             //Sort the list of tweets by timestamp
             tweets.sort(Comparator.comparing(Tweet::getTimeStamp).reversed());
@@ -59,7 +59,7 @@ public class TweetsController extends MvcConfiguration {
     @RequestMapping(value = "/statusUpdate")
     public ModelAndView statusUpdate(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelView = new ModelAndView();
-        RequestHandler requestHandler = getRequestHandler(request,response);
+        RequestHandler requestHandler = getRequestHandler(request, response);
         if (requestHandler.checkIfLoggedIn()) {
             modelView.setViewName("statusUpdate");
         } else {

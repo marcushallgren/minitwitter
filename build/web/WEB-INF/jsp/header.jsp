@@ -23,9 +23,10 @@
                     <a class="navbar-brand" href="#">${name_loggedin}</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="listTweets">Tweets</a></li>
-                    <li class="active"><a href="listUsers">Users</a></li>
-                    <li class="active"><a href="statusUpdate">Status update</a></li>
+                    <li class="active"><a href="/chas-arbetsprov-marcushallgren/listTweets">Tweets</a></li>
+                    <li class="active"><a href="/chas-arbetsprov-marcushallgren/listUsers">Users</a></li>
+                    <li class="active"><a href="/chas-arbetsprov-marcushallgren/listFollowing">following</a></li>
+                    <li class="active"><a href="/chas-arbetsprov-marcushallgren/statusUpdate">Status update</a></li>
                 </ul>
                 <a class="btn btn-danger navbar-btn" href="logout" role="button">Logout</a>
             </div>

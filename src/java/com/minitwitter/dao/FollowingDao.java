@@ -17,4 +17,7 @@ public interface FollowingDao {
     
     public List<Following> getFollowing(int userId);
     
+    public void follow(int userId, int followingId);
+    
+    public void unFollow(int userId, int followingId);
 }

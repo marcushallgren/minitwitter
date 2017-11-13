@@ -30,4 +30,18 @@ public class FollowingDaoImpl implements FollowingDao {
         return followingIds;
     }
 
+    @Override
+    public void follow(int userId, int followingId) {
+     String sql = "INSERT INTO user_follows (user_id, following_id)"
+                + " VALUES (?,?)";
+     jdbcTemplate.update(sql, userId, followingId);
+    }
+    
+    @Override
+    public void unFollow(int userId, int id) {
+        String SQL = "delete from user_follows where user_id = ? AND following_id = ?";
+        jdbcTemplate.update(SQL, userId, id);
+        System.out.println("deleted follower with ID = " + id);
+    }
+
 }

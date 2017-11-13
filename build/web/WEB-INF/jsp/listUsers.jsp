@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" 
-    prefix="c" %> 
+           prefix="c" %> 
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -15,8 +15,11 @@
     </head>
     <jsp:include page="header.jsp" />
     <body>
-        <c:forEach var = "i" begin = "0" end = "${size}">
-            <p><c:out value = "${listuser[i].getName()}"/></p>
-        </c:forEach>
+        <div id="container">
+            <c:forEach var = "i" begin = "0" end = "${size}">
+                <p><c:out value = "${listUser[i].getName()}"/> <a class="btn btn-info" href="/chas-arbetsprov-marcushallgren/follow/${listUser[i].getId()}" role="button">follow</a></p>
+            </c:forEach>
+        </div>
+
     </body>
 </html>

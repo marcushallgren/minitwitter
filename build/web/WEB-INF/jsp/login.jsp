@@ -28,8 +28,12 @@
                     <label for="password">Password:</label>
                     <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
                 </div>
-                <button type="submit" class="btn btn-default">Login</button>
+                <button type="submit" class="btn btn-success">Login</button>
             </form>
+            <br>
+            <br>
+            <h3>to register an account, press the button below</h3>
+            <a class="btn btn-info" href="register" role="button">Register account</a>
         </div>
     </body>
 </html>

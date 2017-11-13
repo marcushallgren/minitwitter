@@ -17,7 +17,7 @@
     <body>
         <div id="container">
             <c:forEach var = "i" begin = "0" end = "${size}">
-                <p><c:out value = "${listUser[i].getName()}"/> <a class="btn btn-info" href="/chas-arbetsprov-marcushallgren/follow/${listUser[i].getId()}" role="button">follow</a></p>
+                <p><c:out value = "${listUser[i].getName()}"/> <a class="btn btn-danger" href="/chas-arbetsprov-marcushallgren/unFollow/${listUser[i].getId()}" role="button">unfollow</a></p>
             </c:forEach>
         </div>
 

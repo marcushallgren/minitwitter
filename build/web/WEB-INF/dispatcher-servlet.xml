@@ -31,8 +31,11 @@
                 <prop key="homepage">loginController</prop>
                 <prop key="listTweets">tweetsController</prop>
                 <prop key="listUsers">userController</prop>
+                <prop key="listFollowing">userController</prop>
                 <prop key="statusUpdate">tweetsController</prop>
                 <prop key="tweet">tweetsController</prop>
+                <prop key="follow/{id}">userController</prop>
+                <prop key="unFollow/{id}">userController</prop>
             </props>
         </property>
     </bean>
